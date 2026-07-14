@@ -1,4 +1,4 @@
-# <img src="icons/icon48.png" width="50" height="50" align="absmiddle"> Glyph
+# <img src="icons/icon48.png" width="40" height="40" align="absmiddle"> Glyph
 
 
 
