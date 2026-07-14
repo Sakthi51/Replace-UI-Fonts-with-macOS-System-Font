@@ -1,4 +1,4 @@
-# <img src="icons/icon48.png" width="32" height="32" style="vertical-align: middle;"> Glyph
+# <img src="icons/icon48.png" width="36" height="36" style="vertical-align: text-bottom;"> Glyph
 
 A Chrome extension that replaces website fonts with your operating system's native font (SF Pro on macOS, Segoe UI on Windows). Automatically detects and preserves code/monospace fonts.
 
