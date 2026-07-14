@@ -30,6 +30,8 @@ A Chrome extension that replaces website fonts with your operating system's nati
 4. Click **Load unpacked** → select this folder
 5. Navigate to any website → click the extension icon → toggle on
 
+> **Incognito mode:** To use Glyph in Incognito, go to `chrome://extensions` → find Glyph → click **Details** → enable **Allow in Incognito**.
+
 ## How It Works
 
 The extension uses a simple, reliable strategy:
