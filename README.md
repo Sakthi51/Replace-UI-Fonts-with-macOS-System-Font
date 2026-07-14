@@ -1,4 +1,4 @@
-# <img src="icons/icon48.png" width="28" height="28" align="top"> Glyph
+# <img src="icons/icon48.png" width="32" height="32" align="middle"> Glyph
 
 A Chrome extension that replaces website fonts with your operating system's native font (SF Pro on macOS, Segoe UI on Windows). Automatically detects and preserves code/monospace fonts.
 
@@ -7,7 +7,7 @@ A Chrome extension that replaces website fonts with your operating system's nati
 - One-click toggle per site or globally
 - Auto-detects monospace/code fonts and leaves them untouched
 - Works on any website
-- Zero data collection — fully offline
+- Zero data collection, fully offline
 - Handles SPAs, lazy-loaded content, and dynamic rendering
 
 ## Before & After
@@ -41,7 +41,7 @@ This guarantees code blocks, terminal output, and icon fonts are never affected,
 | File | Purpose |
 |---|---|
 | `manifest.json` | Extension config |
-| `content.js` | Core logic — detects fonts and applies override |
+| `content.js` | Core logic: detects fonts and applies override |
 | `background.js` | Manages per-site state and script injection |
 | `popup.html/js` | Extension popup UI |
 | `options.html/js` | Full options page |
