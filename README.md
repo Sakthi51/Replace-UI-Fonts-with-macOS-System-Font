@@ -4,6 +4,8 @@
 
 A Chrome extension that replaces website fonts with your operating system's native font (SF Pro on macOS, Segoe UI on Windows). Automatically detects and preserves code/monospace fonts.
 
+![Glyph Extension](screenshots/Project%20screenshot.png)
+
 ## Features
 
 - One-click toggle per site or globally
