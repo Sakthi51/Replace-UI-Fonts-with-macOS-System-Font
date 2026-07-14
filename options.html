@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Glyph — Settings</title>
   <style>
     :root {
@@ -206,21 +207,28 @@
     }
 
     .site-favicon {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 6px;
       background: var(--bg-tertiary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
       overflow: hidden;
     }
 
+    .site-favicon svg {
+      width: 14px;
+      height: 14px;
+      color: var(--text-secondary);
+    }
+
     .site-favicon img {
-      width: 16px;
-      height: 16px;
-      border-radius: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      object-fit: contain;
     }
 
     .site-hostname {
@@ -233,14 +241,20 @@
       border: none;
       color: var(--text-tertiary);
       cursor: pointer;
-      font-size: 18px;
       width: 28px;
       height: 28px;
+      min-width: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 6px;
       transition: all 0.15s;
+      padding: 0;
+    }
+
+    .remove-btn svg {
+      width: 14px;
+      height: 14px;
     }
 
     .remove-btn:hover {
@@ -267,6 +281,10 @@
     .search-icon {
       color: var(--text-tertiary);
       flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
     }
 
     .search-row input {
@@ -405,7 +423,7 @@
     </div>
   </div>
 
-  <div class="toast" id="toast">✓ Saved</div>
+  <div class="toast" id="toast">&#10003; Saved</div>
 
   <script src="options.js"></script>
 </body>

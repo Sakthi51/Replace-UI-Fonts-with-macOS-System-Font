@@ -49,26 +49,47 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const globeSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>';
 
-    siteList.innerHTML = sites.map(site => {
+    siteList.innerHTML = '';
+    sites.forEach(site => {
       const siteData = data.enabledSites[site];
-      const favicon = (typeof siteData === 'object' && siteData.favicon)
-        ? `<img src="${siteData.favicon}" onerror="this.parentElement.innerHTML='${globeSvg}'">`
-        : globeSvg;
+      const row = document.createElement('div');
+      row.className = 'site-item';
 
-      return `
-        <div class="site-item">
-          <div class="site-item-left">
-            <div class="site-favicon">${favicon}</div>
-            <span class="site-hostname">${site}</span>
-          </div>
-          <button class="remove-btn" data-site="${site}" title="Remove"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-        </div>
-      `;
-    }).join('');
+      const left = document.createElement('div');
+      left.className = 'site-item-left';
+
+      const faviconDiv = document.createElement('div');
+      faviconDiv.className = 'site-favicon';
+      if (typeof siteData === 'object' && siteData.favicon) {
+        const img = document.createElement('img');
+        img.src = siteData.favicon;
+        img.onerror = () => { faviconDiv.innerHTML = globeSvg; };
+        faviconDiv.appendChild(img);
+      } else {
+        faviconDiv.innerHTML = globeSvg;
+      }
+
+      const hostnameSpan = document.createElement('span');
+      hostnameSpan.className = 'site-hostname';
+      hostnameSpan.textContent = site;
+
+      left.appendChild(faviconDiv);
+      left.appendChild(hostnameSpan);
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-btn';
+      removeBtn.title = 'Remove';
+      removeBtn.dataset.site = site;
+      removeBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+
+      row.appendChild(left);
+      row.appendChild(removeBtn);
+      siteList.appendChild(row);
+    });
 
     siteList.querySelectorAll('.remove-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const site = btn.dataset.site;
+      btn.addEventListener('click', async (e) => {
+        const site = e.currentTarget.dataset.site;
         const d = await chrome.storage.sync.get({ enabledSites: {} });
         delete d.enabledSites[site];
         await chrome.storage.sync.set({ enabledSites: d.enabledSites });

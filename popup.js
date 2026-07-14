@@ -49,9 +49,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   siteName.textContent = hostname;
 
   // Show favicon
-  const globeSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>';
   if (tab.favIconUrl) {
-    siteFavicon.innerHTML = `<img src="${tab.favIconUrl}" width="16" height="16" style="border-radius:3px;" onerror="this.innerHTML='${globeSvg}'">`;
+    const img = document.createElement('img');
+    img.src = tab.favIconUrl;
+    img.width = 16;
+    img.height = 16;
+    img.style.borderRadius = '3px';
+    img.onerror = () => { img.style.display = 'none'; };
+    siteFavicon.innerHTML = '';
+    siteFavicon.appendChild(img);
   }
 
   // Get state
